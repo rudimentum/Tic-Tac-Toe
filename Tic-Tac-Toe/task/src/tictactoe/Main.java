@@ -1,10 +1,21 @@
 package tictactoe;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        // write your code here
-        System.out.println("X O X");
-        System.out.println("O X O");
-        System.out.println("X X O");
+        Scanner scanner = new Scanner(System.in);
+        String line = scanner.nextLine();
+        String[] symbols = line.split("");
+        System.out.println("---------");
+        int index = 0;
+        for (int i = 0; i < 3; i++) {
+            System.out.print("| ");
+            for (int j = 0; j < 3; j++) {
+                System.out.print(symbols[index++] + " ");
+            }
+            System.out.println("|");
+        }
+        System.out.println("---------");
     }
 }
