@@ -5,9 +5,53 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter cells: ");
         String line = scanner.nextLine();
-        printGame(line);
-        System.out.println(printResult(line));
+        char[][] gameState = generateArray(line);
+        printGame(gameState);
+        enterCoordinates(gameState);
+    }
+
+    public static void enterCoordinates(char[][] gameState) {
+        Scanner scanner = new Scanner(System.in);
+        int first;
+        int second;
+        while (true) {
+            System.out.println("Enter the coordinates: ");
+            first = scanner.nextInt() - 1;
+            second = scanner.nextInt() - 1;
+            if (first <= 2 || second <= 2) {
+                break;
+            }
+            System.out.println("Coordinates should be from 1 to 3!");
+        }
+
+        if (second == 0) {
+            if (first == 1 || first == 2) {
+                second = first;
+            }
+            first = 2;
+        }
+        else if (second == 1) {
+            int temp = second;
+            second = first;
+            first = temp;
+        }
+        else if (second == 2) {
+            if (first == 0 || first == 1) {
+                second = first;
+            }
+            first = 0;
+        }
+
+        char current = gameState[first][second];
+        if (current == '_') {
+            char[][] newGameState = generateArray(gameState, first, second);
+            printGame(newGameState);
+        } else {
+            System.out.println("This cell is occupied! Choose another one!");
+            enterCoordinates(gameState);
+        }
     }
 
     public static char[][] generateArray(String line) {
@@ -21,8 +65,12 @@ public class Main {
         return symbols;
     }
 
-    public static void printGame(String line) {
-        char[][] symbols = generateArray(line);
+    public static char[][] generateArray(char[][] gameState, int first, int second) {
+        gameState[first][second] = 'X';
+        return gameState;
+    }
+
+    public static void printGame(char[][] symbols) {
         System.out.println("---------");
         for (int i = 0; i < symbols.length; i++) {
             System.out.print("| ");
@@ -34,9 +82,7 @@ public class Main {
         System.out.println("---------");
     }
 
-    public static String printResult(String line) {
-        char[][] symbols = generateArray(line);
-
+    public static String printResult(char[][] symbols) {
         int xZeroCol = 0;
         int oZeroCol = 0;
         int xFirstCol = 0;
