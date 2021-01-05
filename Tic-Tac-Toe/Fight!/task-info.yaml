@@ -62,9 +62,7 @@ files:
         TicTacToeField(FieldState[][] field) {
             this.field = new FieldState[3][3];
             for (int row = 0; row < 3; row++) {
-                for (int col = 0; col < 3; col++) {
-                    this.field[row][col] = field[row][col];
-                }
+                System.arraycopy(field[row], 0, this.field[row], 0, 3);
             }
         }
 
@@ -72,8 +70,7 @@ files:
             field = new FieldState[3][3];
             for (int row = 0; row < 3; row++) {
                 for (int col = 0; col < 3; col++) {
-                    field[row][col] =
-                        FieldState.get(str.charAt(((2 - row) * 3 + col)));
+                    field[row][col] = FieldState.get(str.charAt((row * 3 + col)));
                 }
             }
         }
@@ -216,7 +213,7 @@ files:
 
                 FieldState[][] field = new FieldState[3][3];
 
-                int y = 2;
+                int y = 0;
                 for (String line : lines) {
                     char[] cols = new char[] {
                         line.charAt(2),
@@ -233,7 +230,7 @@ files:
                         field[y][x] = state;
                         x++;
                     }
-                    y--;
+                    y++;
                 }
 
                 return new TicTacToeField(field);
@@ -454,5 +451,13 @@ files:
     }
   learner_created: false
 feedback_link: https://hyperskill.org/projects/48/stages/259/implement
-status: Unchecked
-record: -1
+status: Failed
+feedback:
+  message: "Exception in test #1\n\njava.lang.StringIndexOutOfBoundsException: String\
+    \ index out of range: 3\r\n\tat java.base/java.lang.StringLatin1.charAt(StringLatin1.java:47)\r\
+    \n\tat java.base/java.lang.String.charAt(String.java:693)\r\n\tat tictactoe.Main.generateArray(Main.java:62)\r\
+    \n\tat tictactoe.Main.main(Main.java:10)\n\nPlease find below the output of your\
+    \ program during this failed test.\nNote that the &#39;&gt;&#39; character indicates\
+    \ the beginning of the input line.\n\n---\n\nEnter cells: \n&gt; 2 2"
+  time: Mon, 04 Jan 2021 20:11:28 UTC
+record: 5

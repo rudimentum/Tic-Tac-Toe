@@ -14,12 +14,17 @@ public class Main {
 
     public static void enterCoordinates(char[][] gameState) {
         Scanner scanner = new Scanner(System.in);
-        int first;
-        int second;
+        int first = 0;
+        int second = 0;
         while (true) {
             System.out.println("Enter the coordinates: ");
-            first = scanner.nextInt() - 1;
-            second = scanner.nextInt() - 1;
+            try {
+                first = scanner.nextInt() - 1;
+                second = scanner.nextInt() - 1;
+            }
+            catch (NumberFormatException e) {
+                System.out.println("You should enter numbers!");
+            }
             if (first <= 2 || second <= 2) {
                 break;
             }

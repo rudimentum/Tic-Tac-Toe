@@ -1,16 +1,29 @@
 <h2 style="text-align: center;">Description</h2>
 
-<p>Now it is time to make a working game!</p>
+<p>Our game is almost ready! Now let's combine what we’ve learned in the previous stages to make a game of tic-tac-toe that two players can play from the beginning (with an empty grid) through to the end (until there is a draw, or one of the players wins).</p>
 
-<p>In the last stage, make it so you can play a full game with a friend. First one of you moves as X, and then the other one moves as O.</p>
+<p>The first player has to play as X and their opponent plays as O.</p>
 
-<p>You need to create a game loop. The game starts with empty cells and ends when someone wins or there is a draw. You need to output the final result after the end of the game.</p>
+<h2 style="text-align: center;">Objectives</h2>
 
-<p>Good luck gaming!</p>
+<p>In this stage, you should write a program that:</p>
+
+<ol>
+	<li>Prints an empty grid at the beginning of the game.</li>
+	<li>Creates a game loop where the program asks the user to enter the cell coordinates, analyzes the move for correctness and shows a grid with the changes if everything is okay.</li>
+	<li>Ends the game when someone wins or there is a draw.</li>
+</ol>
+
+<p>You need to output the final result at the end of the game.</p>
+
+<p>Good luck!</p>
+
+<p><div class="alert alert-warning">The project was changed. Now the coordinates start from the upper left corner. Look closely at the examples.</div></p>
 
 <h2 style="text-align: center;">Example</h2>
 
-<p>The example below shows how your program should work.</p>
+<p>The example below shows how your program should work.<br>
+	Notice that after <code class="java">Enter the coordinates:</code> comes the user input.</p>
 
 <pre><code class="language-no-highlight">---------
 |       |
@@ -29,37 +42,37 @@ Enter the coordinates: two two
 You should enter numbers!
 Enter the coordinates: 1 4
 Coordinates should be from 1 to 3!
-Enter the coordinates: 1 3
+Enter the coordinates: 1 1
 ---------
 | O     |
 |   X   |
 |       |
 ---------
-Enter the coordinates: 3 1
+Enter the coordinates: 3 3
 ---------
 | O     |
 |   X   |
 |     X |
 ---------
-Enter the coordinates: 1 2
+Enter the coordinates: 2 1
 ---------
 | O     |
 | O X   |
 |     X |
 ---------
-Enter the coordinates: 1 1
+Enter the coordinates: 3 1
 ---------
 | O     |
 | O X   |
 | X   X |
 ---------
-Enter the coordinates: 3 2
+Enter the coordinates: 2 3
 ---------
 | O     |
 | O X O |
 | X   X |
 ---------
-Enter the coordinates: 2 1
+Enter the coordinates: 3 2
 ---------
 | O     |
 | O X O |
